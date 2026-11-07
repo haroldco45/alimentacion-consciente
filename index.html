@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alimentación Consciente | Mindful Eating - Vibras Positivas HM</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        sage: {
+                            50: '#f4f7f4',
+                            100: '#e3eae3',
+                            500: '#739072',
+                            600: '#4f6f52',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Custom smooth scroll & animation styling */
+        .fade-in { animation: fadeIn 0.4s ease-in-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-sage-50 text-slate-800 min-h-full flex flex-col justify-between selection:bg-brand-200 selection:text-brand-900">
+
+    <!-- Top Navigation -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-emerald-100 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 to-emerald-400 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+                    <i class="fa-solid fa-leaf text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-slate-800 leading-tight">Mindful Eating</h1>
+                    <p class="text-xs text-brand-700 font-medium">Vibras Positivas HM</p>
+                </div>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <nav class="flex items-center space-x-1 sm:space-x-2 overflow-x-auto py-1">
+                <button onclick="switchTab('home')" id="nav-home" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center space-x-2 bg-brand-600 text-white shadow-sm">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="hidden sm:inline">Inicio</span>
+                </button>
+                <button onclick="switchTab('quiz')" id="nav-quiz" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 hover:bg-emerald-50 transition-all flex items-center space-x-2">
+                    <i class="fa-solid fa-clipboard-question"></i>
+                    <span class="hidden sm:inline">Test Hábitos</span>
+                </button>
+                <button onclick="switchTab('timer')" id="nav-timer" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 hover:bg-emerald-50 transition-all flex items-center space-x-2">
+                    <i class="fa-solid fa-stopwatch"></i>
+                    <span class="hidden sm:inline">Pausa 5 Min</span>
+                </button>
+                <button onclick="switchTab('diary')" id="nav-diary" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 hover:bg-emerald-50 transition-all flex items-center space-x-2">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span class="hidden sm:inline">Diario Consciente</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Content Container -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-6 sm:py-8">
+
+        <!-- ================= TAB 1: HOME & PILLARS ================= -->
+        <section id="tab-home" class="tab-content fade-in space-y-8">
+            <!-- Hero Banner -->
+            <div class="relative overflow-hidden bg-gradient-to-br from-emerald-800 via-brand-800 to-sage-600 rounded-3xl p-6 sm:p-12 text-white shadow-xl">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-2xl space-y-4">
+                    <span class="bg-white/20 text-emerald-100 text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider backdrop-blur-md">
+                        Nutrición con atención plena
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+                        Reconecta con tu cuerpo y disfruta cada bocado
+                    </h2>
+                    <p class="text-emerald-100 text-sm sm:text-base leading-relaxed">
+                        La alimentación consciente no es una dieta restrictiva ni busca contar calorías. Es un enfoque para prestar atención plena, intencionada y sin juicios a tu relación con los alimentos.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <button onclick="switchTab('quiz')" class="bg-white text-emerald-900 px-5 py-3 rounded-xl font-bold text-sm shadow-lg hover:bg-emerald-50 transition-all flex items-center space-x-2">
+                            <span>Evaluar mis hábitos</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <button onclick="switchTab('timer')" class="bg-emerald-700/60 border border-emerald-400/40 text-white px-5 py-3 rounded-xl font-medium text-sm hover:bg-emerald-700 transition-all flex items-center space-x-2">
+                            <i class="fa-solid fa-seedling"></i>
+                            <span>Práctica de 5 min</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 Pillars Section -->
+            <div class="space-y-4">
+                <div class="text-center max-w-xl mx-auto">
+                    <h3 class="text-2xl font-bold text-slate-800">Pilares Clave del Mindful Eating</h3>
+                    <p class="text-slate-600 text-sm mt-1">Fundamentos para transformar tu forma de relacionarte con la comida en el día a día.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                    <!-- Pillar 1 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100 hover:shadow-md transition-all flex space-x-4 items-start">
+                        <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 text-xl">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <h4 class="font-bold text-slate-800 text-lg">1. Diferenciar tipos de hambre</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Aprende a reconocer el <strong>hambre física real</strong> frente al <strong>hambre emocional</strong> (provocada por ansiedad, aburrimiento o estrés) o el hambre visual/olfativa.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100 hover:shadow-md transition-all flex space-x-4 items-start">
+                        <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 text-xl">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <h4 class="font-bold text-slate-800 text-lg">2. Escuchar al cuerpo</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Identifica las señales sutiles de saciedad para detenerte cuando el cuerpo esté satisfecho, no cuando el plato esté completamente vacío.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100 hover:shadow-md transition-all flex space-x-4 items-start">
+                        <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 text-xl">
+                            <i class="fa-solid fa-ban"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <h4 class="font-bold text-slate-800 text-lg">3. Eliminar distracciones</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Come sin la televisión, el teléfono móvil o el ordenador para enfocar todos tus sentidos por completo en el sabor, el aroma y la textura del plato.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 4 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100 hover:shadow-md transition-all flex space-x-4 items-start">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 text-xl">
+                            <i class="fa-solid fa-hourglass-start"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <h4 class="font-bold text-slate-800 text-lg">4. Comer sin prisa</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Mastica lentamente, haz una pausa consciente antes de empezar y deja los cubiertos sobre la mesa entre bocado y bocado para dar tiempo a tu digestión.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefits Box -->
+            <div class="bg-gradient-to-r from-emerald-50 to-brand-50 border border-emerald-200/60 rounded-3xl p-6 sm:p-8 space-y-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center shadow-md">
+                        <i class="fa-solid fa-spa text-lg"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800">Principales Beneficios</h3>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                    <div class="bg-white/80 p-4 rounded-2xl border border-emerald-100 shadow-xs space-y-2">
+                        <div class="text-brand-600 font-bold text-sm flex items-center space-x-2">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Digestión Óptima</span>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">Mejora la digestión y la absorción de nutrientes gracias a una masticación más pausada.</p>
+                    </div>
+                    <div class="bg-white/80 p-4 rounded-2xl border border-emerald-100 shadow-xs space-y-2">
+                        <div class="text-brand-600 font-bold text-sm flex items-center space-x-2">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Menos Ansiedad</span>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">Ayuda a reducir el estrés, la ansiedad y los episodios de atracones o comer impulsivo.</p>
+                    </div>
+                    <div class="bg-white/80 p-4 rounded-2xl border border-emerald-100 shadow-xs space-y-2">
+                        <div class="text-brand-600 font-bold text-sm flex items-center space-x-2">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Relación Saludable</span>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">Fomenta un peso y una relación saludable con la comida a largo plazo, sin prohibiciones.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= TAB 2: INTERACTIVE QUIZ ================= -->
+        <section id="tab-quiz" class="tab-content hidden fade-in max-w-2xl mx-auto space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-emerald-100 space-y-6">
+                <div class="border-b border-slate-100 pb-4 flex justify-between items-center">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Autoevaluación</span>
+                        <h3 class="text-xl font-bold text-slate-800">¿Cómo comes hoy en día?</h3>
+                    </div>
+                    <span id="quiz-progress" class="bg-emerald-50 text-emerald-800 px-3 py-1 rounded-full text-xs font-semibold">Pregunta 1 de 4</span>
+                </div>
+
+                <!-- Quiz Question Container -->
+                <div id="quiz-container" class="space-y-6">
+                    <!-- Dynamic question content injected via JS -->
+                </div>
+
+                <!-- Quiz Results Container (Hidden initially) -->
+                <div id="quiz-results" class="hidden space-y-6">
+                    <div class="text-center space-y-3 py-4">
+                        <div class="w-16 h-16 bg-brand-100 text-brand-700 rounded-full flex items-center justify-center mx-auto text-2xl shadow-inner">
+                            <i class="fa-solid fa-seedling"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-slate-800">Tu Perfil Consciente</h4>
+                        <p id="quiz-feedback" class="text-slate-600 text-sm max-w-md mx-auto leading-relaxed"></p>
+                    </div>
+                    <div class="bg-emerald-50/70 border border-emerald-200/60 rounded-2xl p-5 space-y-3">
+                        <h5 class="font-bold text-emerald-900 text-sm flex items-center space-x-2">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                            <span>Recomendaciones personalizadas para ti:</span>
+                        </h5>
+                        <ul id="quiz-tips" class="space-y-2 text-xs text-slate-700"></ul>
+                    </div>
+                    <button onclick="restartQuiz()" class="w-full bg-brand-600 hover:bg-brand-700 text-white py-3 rounded-xl font-semibold text-sm transition-all shadow-md">
+                        Volver a realizar el test
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= TAB 3: 5-MIN BREATHING & TIMER ================= -->
+        <section id="tab-timer" class="tab-content hidden fade-in max-w-2xl mx-auto space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-emerald-100 text-center space-y-6">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Ejercicio Práctico</span>
+                    <h3 class="text-2xl font-bold text-slate-800 mt-1">Pausa Consciente Pre-Comida</h3>
+                    <p class="text-slate-600 text-sm mt-1">Dedica 5 minutos antes de comer para calmar tu mente, diferenciar el hambre y conectar con tus sentidos.</p>
+                </div>
+
+                <!-- Timer & Breathing Circle UI -->
+                <div class="relative w-56 h-56 mx-auto flex items-center justify-center">
+                    <!-- Outer pulse ring -->
+                    <div id="breathing-ring" class="absolute inset-0 rounded-full bg-emerald-100 opacity-60 transition-transform duration-1000 scale-100"></div>
+                    <!-- Inner circle -->
+                    <div class="relative z-10 w-44 h-44 rounded-full bg-gradient-to-tr from-brand-600 to-emerald-500 flex flex-col items-center justify-center text-white shadow-lg">
+                        <span id="timer-display" class="text-4xl font-extrabold tracking-tight">05:00</span>
+                        <span id="breathing-text" class="text-xs font-medium uppercase tracking-wider mt-1 text-emerald-100">Pulsa Iniciar</span>
+                    </div>
+                </div>
+
+                <!-- Step instruction guide -->
+                <div id="timer-guide" class="bg-slate-50 border border-slate-200/70 rounded-2xl p-4 text-left space-y-2">
+                    <div class="flex items-center space-x-2 text-brand-700 font-bold text-xs uppercase tracking-wide">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span>Guía paso a paso para estos 5 minutos:</span>
+                    </div>
+                    <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                        <li><strong>Minuto 1-2:</strong> Respira profundamente. Inhala en 4 segundos, sostén 2, exhala en 4.</li>
+                        <li><strong>Minuto 3:</strong> Escanea tu cuerpo: ¿Es hambre física o ansiedad/aburrimiento?</li>
+                        <li><strong>Minuto 4:</strong> Observa el plato: agradece los colores, aromas y texturas.</li>
+                        <li><strong>Minuto 5:</strong> Comprométete a comer sin prisa y sin pantallas.</li>
+                    </ul>
+                </div>
+
+                <!-- Control Buttons -->
+                <div class="flex flex-wrap justify-center gap-3">
+                    <button id="btn-start-timer" onclick="toggleTimer()" class="bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-md transition-all flex items-center space-x-2">
+                        <i id="timer-icon" class="fa-solid fa-play"></i>
+                        <span id="timer-btn-text">Iniciar Pausa</span>
+                    </button>
+                    <button onclick="resetTimer()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-6 py-3 rounded-xl font-medium text-sm transition-all flex items-center space-x-2">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        <span>Reiniciar</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= TAB 4: MINDFUL FOOD DIARY ================= -->
+        <section id="tab-diary" class="tab-content hidden fade-in max-w-4xl mx-auto space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Form Column -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border border-emerald-100 space-y-4 lg:col-span-1">
+                    <div class="border-b border-slate-100 pb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Registro diario</span>
+                        <h3 class="text-lg font-bold text-slate-800">Nuevo Registro</h3>
+                    </div>
+
+                    <form id="diary-form" onsubmit="saveMeal(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">¿Qué vas a comer?</label>
+                            <input type="text" id="meal-name" required placeholder="Ej. Ensalada de quinoa y aguacate" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 bg-slate-50/50">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Tipo de Hambre Inicial</label>
+                            <select id="meal-hunger" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 bg-slate-50/50">
+                                <option value="Hambre Física Real">Hambre física real (estómago vacío)</option>
+                                <option value="Hambre Emocional / Ansiedad">Hambre emocional (por estrés / ansiedad)</option>
+                                <option value="Hambre por Aburrimiento">Hambre por aburrimiento</option>
+                                <option value="Hambre Visual / Olfativa">Hambre visual / por antojo externo</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Nivel de Distracciones</label>
+                            <select id="meal-distraction" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 bg-slate-50/50">
+                                <option value="Sin pantallas (100% consciente)">Sin pantallas (100% consciente)</option>
+                                <option value="Con televisión de fondo">Con televisión de fondo</option>
+                                <option value="Usando el móvil / redes sociales">Usando el móvil / redes sociales</option>
+                                <option value="Trabajando frente al ordenador">Trabajando frente al ordenador</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Sensación al terminar (Saciedad)</label>
+                            <select id="meal-satisfaction" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 bg-slate-50/50">
+                                <option value="Satisfecho/a (ligero y en paz)">Satisfecho/a (ligero y en paz)</option>
+                                <option value="Lleno/a en exceso (pesadez)">Lleno/a en exceso (pesadez)</option>
+                                <option value="Con ganas de seguir picando">Con ganas de seguir picando</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Reflexión o notas breves</label>
+                            <textarea id="meal-notes" rows="2" placeholder="¿Cómo te sentiste al masticar despacio?" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 bg-slate-50/50 resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white py-3 rounded-xl font-bold text-sm shadow-md transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Guardar Registro</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- History Column -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border border-emerald-100 space-y-4 lg:col-span-2 flex flex-col">
+                    <div class="border-b border-slate-100 pb-3 flex justify-between items-center">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Historial</span>
+                            <h3 class="text-lg font-bold text-slate-800">Tus Comidas Conscientes</h3>
+                        </div>
+                        <button onclick="clearDiary()" class="text-xs text-red-500 hover:text-red-700 font-medium transition-all">
+                            <i class="fa-solid fa-trash-can mr-1"></i> Borrar Todo
+                        </button>
+                    </div>
+
+                    <div id="diary-list" class="space-y-3 overflow-y-auto max-h-[500px] pr-1 flex-grow">
+                        <!-- Dynamic items injected here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Copyright -->
+    <footer class="bg-white border-t border-emerald-100 py-6 mt-12">
+        <div class="max-w-6xl mx-auto px-4 text-center space-y-2">
+            <div class="flex items-center justify-center space-x-2 text-brand-700 font-semibold text-sm">
+                <i class="fa-solid fa-seedling"></i>
+                <span>Vibras Positivas HM</span>
+            </div>
+            <p class="text-xs text-slate-500">
+                © 2026 Alimentación Consciente (Mindful Eating). Todos los derechos reservados. Basado en principios de atención plena y bienestar integral.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Custom Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-xl text-sm flex items-center space-x-3 transform translate-y-24 opacity-0 transition-all duration-300">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toast-msg">Notificación vibrante</span>
+    </div>
+
+    <!-- Application JavaScript Logic -->
+    <script>
+        // --- TAB NAVIGATION ---
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-600', 'text-white', 'shadow-sm');
+                btn.classList.add('text-slate-600', 'hover:bg-emerald-50');
+            });
+
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('nav-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-600', 'hover:bg-emerald-50');
+                activeBtn.classList.add('bg-brand-600', 'text-white', 'shadow-sm');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- TOAST NOTIFICATION ---
+        function showToast(message, isSuccess = true) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+            const toastIcon = document.getElementById('toast-icon');
+
+            toastMsg.textContent = message;
+            toastIcon.className = isSuccess ? "fa-solid fa-circle-check text-emerald-400 text-lg" : "fa-solid fa-circle-exclamation text-amber-400 text-lg";
+            
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3000);
+        }
+
+        // --- QUIZ DATA & LOGIC ---
+        const quizQuestions = [
+            {
+                question: "¿Con qué velocidad sueles terminar tus comidas principales?",
+                options: [
+                    { text: "Muy rápido, suelo terminar antes que los demás", score: 1 },
+                    { text: "A un ritmo normal, a veces con prisa", score: 2 },
+                    { text: "Lento, masticando con calma y disfrutando", score: 3 }
+                ]
+            },
+            {
+                question: "¿Comes habitualmente acompañado/a de pantallas (móvil, TV, ordenador)?",
+                options: [
+                    { text: "Siempre, no puedo comer sin ver algo", score: 1 },
+                    { text: "A veces, dependiendo de si estoy solo/a", score: 2 },
+                    { text: "Casi nunca, evito distracciones para enfocarme en la comida", score: 3 }
+                ]
+            },
+            {
+                question: "Cuando sientes la necesidad de picar entre horas, ¿cómo sabes si es hambre real?",
+                options: [
+                    { text: "Como por ansiedad, aburrimiento o antojo repentino", score: 1 },
+                    { text: "A veces dudo si es hambre física o sed/estrés", score: 2 },
+                    { text: "Identifico claramente si mi estómago realmente necesita combustible", score: 3 }
+                ]
+            },
+            {
+                question: "¿En qué momento sueles detenerte al comer?",
+                options: [
+                    { text: "Cuando el plato está completamente vacío", score: 1 },
+                    { text: "Cuando siento que ya estoy bastante lleno/a", score: 2 },
+                    { text: "Cuando mi cuerpo me indica saciedad ligera, antes de saturarme", score: 3 }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let totalScore = 0;
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            const results = document.getElementById('quiz-results');
+            const progress = document.getElementById('quiz-progress');
+
+            if (currentQuestionIndex >= quizQuestions.length) {
+                container.classList.add('hidden');
+                progress.classList.add('hidden');
+                results.classList.remove('hidden');
+                renderQuizResults();
+                return;
+            }
+
+            container.classList.remove('hidden');
+            progress.classList.remove('hidden');
+            results.classList.add('hidden');
+            progress.textContent = `Pregunta ${currentQuestionIndex + 1} de ${quizQuestions.length}`;
+
+            const q = quizQuestions[currentQuestionIndex];
+            let html = `<h4 class="font-bold text-slate-800 text-lg sm:text-xl">${q.question}</h4><div class="space-y-3 pt-2">`;
+            
+            q.options.forEach((opt, idx) => {
+                html += `
+                    <button onclick="answerQuiz(${opt.score})" class="w-full text-left p-4 rounded-2xl border border-slate-200 hover:border-brand-500 hover:bg-brand-50/50 transition-all text-sm font-medium text-slate-700 flex items-center justify-between group">
+                        <span>${opt.text}</span>
+                        <i class="fa-solid fa-chevron-right text-xs text-slate-400 group-hover:text-brand-600 transition-all"></i>
+                    </button>
+                `;
+            });
+            html += `</div>`;
+            container.innerHTML = html;
+        }
+
+        function answerQuiz(score) {
+            totalScore += score;
+            currentQuestionIndex++;
+            renderQuiz();
+        }
+
+        function renderQuizResults() {
+            const feedback = document.getElementById('quiz-feedback');
+            const tips = document.getElementById('quiz-tips');
+            
+            let message = "";
+            let tipList = [];
+
+            if (totalScore <= 5) {
+                message = "Estás viviendo tus comidas en piloto automático, con prisa y distracciones frecuentes. El Mindful Eating te ayudará en gran medida a reconectar con tus señales corporales.";
+                tipList = [
+                    "<li>Prueba apagar el móvil y la televisión al menos en una comida al día.</li>",
+                    "<li>Deja los cubiertos en la mesa entre cada bocado para ralentizar el ritmo.</li>",
+                    "<li>Utiliza nuestra pausa de respiración de 5 minutos antes de empezar a comer.</li>"
+                ];
+            } else if (totalScore <= 9) {
+                message = "Tienes consciencia de tus hábitos, pero aún hay momentos de prisa o distracciones que te impiden disfrutar plenamente de la experiencia alimentaria.";
+                tipList = [
+                    "<li>Identifica qué momentos del día te empujan a comer con ansiedad.</li>",
+                    "<li>Presta especial atención al aroma y la textura del primer bocado.</li>",
+                    "<li>Aprende a diferenciar el hambre física del hambre emocional.</li>"
+                ];
+            } else {
+                message = "¡Excelente trabajo! Tienes una relación muy consciente y saludable con la comida, escuchas a tu cuerpo y disfrutas de cada plato sin prisas.";
+                tipList = [
+                    "<li>Continúa inspirando a quienes te rodean con tus hábitos conscientes.</li>",
+                    "<li>Registra tus platos favoritos en nuestro diario consciente para mantener tu rutina.</li>",
+                    "<li>Disfruta de la paz y el bienestar integral que esta práctica te aporta.</li>"
+                ];
+            }
+
+            feedback.textContent = message;
+            tips.innerHTML = tipList.join('');
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            totalScore = 0;
+            renderQuiz();
+        }
+
+        // --- 5-MIN BREATHING & TIMER LOGIC ---
+        let timeLeft = 300; // 5 minutes in seconds
+        let timerInterval = null;
+        let isTimerRunning = false;
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(timeLeft / 60);
+            const secs = timeLeft % 60;
+            document.getElementById('timer-display').textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function toggleTimer() {
+            const btnText = document.getElementById('timer-btn-text');
+            const timerIcon = document.getElementById('timer-icon');
+            const ring = document.getElementById('breathing-ring');
+            const breathingText = document.getElementById('breathing-text');
+
+            if (isTimerRunning) {
+                clearInterval(timerInterval);
+                isTimerRunning = false;
+                btnText.textContent = "Reanudar Pausa";
+                timerIcon.className = "fa-solid fa-play";
+                breathingText.textContent = "En Pausa";
+                ring.style.transform = "scale(1)";
+            } else {
+                isTimerRunning = true;
+                btnText.textContent = "Pausar";
+                timerIcon.className = "fa-solid fa-pause";
+                breathingText.textContent = "Inhala / Exhala";
+                
+                // Breathing animation simulation
+                let inhale = true;
+                setInterval(() => {
+                    if (!isTimerRunning) return;
+                    ring.style.transform = inhale ? "scale(1.25)" : "scale(1)";
+                    breathingText.textContent = inhale ? "Inhala suave..." : "Exhala profundo...";
+                    inhale = !inhale;
+                }, 4000);
+
+                timerInterval = setInterval(() => {
+                    if (timeLeft > 0) {
+                        timeLeft--;
+                        updateTimerDisplay();
+                    } else {
+                        clearInterval(timerInterval);
+                        isTimerRunning = false;
+                        btnText.textContent = "Iniciar Pausa";
+                        timerIcon.className = "fa-solid fa-play";
+                        breathingText.textContent = "¡Completado!";
+                        ring.style.transform = "scale(1)";
+                        showToast("¡Pausa consciente completada con éxito!");
+                    }
+                }, 1000);
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            timeLeft = 300;
+            updateTimerDisplay();
+            document.getElementById('timer-btn-text').textContent = "Iniciar Pausa";
+            document.getElementById('timer-icon').className = "fa-solid fa-play";
+            document.getElementById('breathing-text').textContent = "Pulsa Iniciar";
+            document.getElementById('breathing-ring').style.transform = "scale(1)";
+        }
+
+        // --- DIARY STORAGE & LOGIC ---
+        function getMeals() {
+            const meals = localStorage.getItem('mindful_meals');
+            return meals ? JSON.parse(meals) : [];
+        }
+
+        function saveMeal(e) {
+            e.preventDefault();
+            const name = document.getElementById('meal-name').value;
+            const hunger = document.getElementById('meal-hunger').value;
+            const distraction = document.getElementById('meal-distraction').value;
+            const satisfaction = document.getElementById('meal-satisfaction').value;
+            const notes = document.getElementById('meal-notes').value;
+
+            const newMeal = {
+                id: Date.now(),
+                date: new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }),
+                name,
+                hunger,
+                distraction,
+                satisfaction,
+                notes
+            };
+
+            const meals = getMeals();
+            meals.unshift(newMeal);
+            localStorage.setItem('mindful_meals', JSON.stringify(meals));
+
+            document.getElementById('diary-form').reset();
+            renderDiary();
+            showToast("¡Comida consciente guardada con éxito!");
+        }
+
+        function deleteMeal(id) {
+            let meals = getMeals();
+            meals = meals.filter(m => m.id !== id);
+            localStorage.setItem('mindful_meals', JSON.stringify(meals));
+            renderDiary();
+            showToast("Registro eliminado", false);
+        }
+
+        function clearDiary() {
+            if (confirm("¿Estás seguro de que deseas borrar todo el diario de comidas?")) {
+                localStorage.removeItem('mindful_meals');
+                renderDiary();
+                showToast("Diario borrado", false);
+            }
+        }
+
+        function renderDiary() {
+            const list = document.getElementById('diary-list');
+            const meals = getMeals();
+
+            if (meals.length === 0) {
+                list.innerHTML = `
+                    <div class="text-center py-12 space-y-3 bg-slate-50/50 rounded-2xl border border-dashed border-slate-200">
+                        <i class="fa-solid fa-book-open text-3xl text-slate-300"></i>
+                        <p class="text-xs text-slate-500">Aún no tienes comidas registradas. ¡Añade tu primer plato consciente!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = "";
+            meals.forEach(m => {
+                html += `
+                    <div class="bg-slate-50/80 border border-emerald-100/80 rounded-2xl p-4 space-y-2 hover:shadow-sm transition-all">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">${m.name}</h4>
+                                <span class="text-[11px] text-slate-400">${m.date}</span>
+                            </div>
+                            <button onclick="deleteMeal(${m.id})" class="text-slate-400 hover:text-red-500 transition-all text-xs p-1">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="bg-emerald-100/70 text-emerald-800 text-[10px] font-semibold px-2.5 py-1 rounded-full">
+                                <i class="fa-solid fa-scale-balanced mr-1"></i> ${m.hunger}
+                            </span>
+                            <span class="bg-blue-100/70 text-blue-800 text-[10px] font-semibold px-2.5 py-1 rounded-full">
+                                <i class="fa-solid fa-mobile-screen mr-1"></i> ${m.distraction}
+                            </span>
+                            <span class="bg-purple-100/70 text-purple-800 text-[10px] font-semibold px-2.5 py-1 rounded-full">
+                                <i class="fa-solid fa-heart mr-1"></i> ${m.satisfaction}
+                            </span>
+                        </div>
+                        ${m.notes ? `<p class="text-xs text-slate-600 italic pt-1 border-t border-slate-200/50">"${m.notes}"</p>` : ''}
+                    </div>
+                `;
+            });
+            list.innerHTML = html;
+        }
+
+        // Initialize App on Load
+        window.onload = function() {
+            renderQuiz();
+            renderDiary();
+            updateTimerDisplay();
+        };
+    </script>
+</body>
+</html>
